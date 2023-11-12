@@ -26,6 +26,7 @@ public enum Kind {
 	RES_write,
 	RES_height,
 	RES_width,
+	RES_else,
 	RES_if,
 	RES_fi,
 	RES_do,
@@ -66,7 +67,14 @@ public enum Kind {
 	RARROW, // ->
 	BOX, //  []
 	EOF,
-	ERROR;
+	ERROR,
+	LANGLE, // <<
+	RANGLE, // >>
+	LARROW, // <-
+	FLOAT_LIT,
+
+	NOT; // !=
+
 
 	
 }

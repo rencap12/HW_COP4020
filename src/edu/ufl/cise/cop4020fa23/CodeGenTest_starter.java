@@ -69,7 +69,29 @@ class CodeGenTest_starter {
 		show(result);
 		assertNull(result);
 	}
-	
+
+	@Test
+	void testSetup() throws Exception {
+		String javaCode = """
+               package edu.ufl.cise.cop4020fa23;
+               import edu.ufl.cise.cop4020fa23.runtime.ConsoleIO;
+               public class Three{
+                  public static void apply(){
+                    ConsoleIO.write(3);
+                  }
+                }
+		""";
+		String packageName = "edu.ufl.cise.cop4020fa23";
+		String fullyQualifiedName = "edu.ufl.cise.cop4020fa23.Three";
+		Object[] params = {};
+		//Invoke Java compiler to obtain classfile
+		byte[] byteCode = DynamicCompiler.compile(fullyQualifiedName, javaCode);
+		//Load generated classfile and execute its "apply" method.
+		Object result = DynamicClassLoader.loadClassAndRunMethod(byteCode, fullyQualifiedName, "apply", params);
+		assertNull(result);
+	}
+
+
 	@Test
 	void cg1() throws Exception {
 		String input = """
